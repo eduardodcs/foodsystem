@@ -48,7 +48,9 @@ public class PedidoDataSourceImpl implements IPedidoDataSource {
 
     @Override
     public Pedido update(Pedido pedido) {
-        return save(pedido);
+        PedidoEntity pedidoEntity = pedidoConvert.pedidoToPedidoEntity(pedido);
+        PedidoEntity saved = pedidoRepository.save(pedidoEntity);
+        return pedidoConvert.pedidoEntityToPedido(saved);
     }
 
     @Override

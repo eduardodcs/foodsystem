@@ -21,16 +21,16 @@ public class PedidoMapper {
         List<PedidoProduto> pedidoProdutoList = pedidoReceived.getListaPedidoProduto().stream().map(item -> {
             PedidoProduto pedidoProduto = new PedidoProduto();
             pedidoProduto.setProduto(produtoUseCase.findById(item.getIdProduto()));
-            pedidoProduto.setQtdeProduto(pedidoProduto.getQtdeProduto());
-            pedidoProduto.setPrecoUnitario(pedidoProduto.getPrecoUnitario());
-            pedidoProduto.setSubTotal(pedidoProduto.getSubTotal());
+            pedidoProduto.setQtdeProduto(item.getQtdeProduto());
+            pedidoProduto.setPrecoUnitario(item.getPrecoUnitario());
+            pedidoProduto.setSubTotal(item.getSubTotal());
             return pedidoProduto;
         }).toList();
         Cliente cliente = clienteUseCase.findById(pedidoReceived.getIdCliente());
         pedido.setCliente(cliente);
         pedido.setListaPedidoProdutos(pedidoProdutoList);
-        pedido.setValorTotalPedido(pedido.getValorTotalPedido());
-        pedido.setObservacao(pedido.getObservacao());
+        pedido.setValorTotalPedido(pedidoReceived.getValorTotal());
+        pedido.setObservacao(pedidoReceived.getObservacao());
         return pedido;
     }
 

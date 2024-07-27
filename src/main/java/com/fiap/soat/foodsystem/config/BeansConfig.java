@@ -1,18 +1,9 @@
 package com.fiap.soat.foodsystem.config;
 
 
-import com.fiap.soat.foodsystem.core.business.interfaces.gateways.ICategoriaGateway;
-import com.fiap.soat.foodsystem.core.business.interfaces.gateways.IClienteGateway;
-import com.fiap.soat.foodsystem.core.business.interfaces.gateways.IPedidoGateway;
-import com.fiap.soat.foodsystem.core.business.interfaces.gateways.IProdutoGateway;
-import com.fiap.soat.foodsystem.core.business.interfaces.usecases.ICategoriaUseCase;
-import com.fiap.soat.foodsystem.core.business.interfaces.usecases.IClienteUseCase;
-import com.fiap.soat.foodsystem.core.business.interfaces.usecases.IPedidoUseCase;
-import com.fiap.soat.foodsystem.core.business.interfaces.usecases.IProdutoUseCase;
-import com.fiap.soat.foodsystem.core.business.usecases.CategoriaUseCaseImpl;
-import com.fiap.soat.foodsystem.core.business.usecases.ClienteUseCaseImpl;
-import com.fiap.soat.foodsystem.core.business.usecases.PedidoUseCaseImpl;
-import com.fiap.soat.foodsystem.core.business.usecases.ProdutoUseCaseImpl;
+import com.fiap.soat.foodsystem.core.business.interfaces.gateways.*;
+import com.fiap.soat.foodsystem.core.business.interfaces.usecases.*;
+import com.fiap.soat.foodsystem.core.business.usecases.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -41,8 +32,13 @@ public class BeansConfig {
     }
 
     @Bean
-    public IPedidoUseCase pedidoUseCaseImpl(IPedidoGateway pedidoGateway) {
-        return new PedidoUseCaseImpl(pedidoGateway);
+    public IPagamentoUseCase pagamentoUseCaseImpl(IPagamentoGateway pedidoGateway) {
+        return new PagamentoUseCaseImpl(pedidoGateway);
+    }
+
+    @Bean
+    public IPedidoUseCase pedidoUseCaseImpl(IPedidoGateway pedidoGateway, IPagamentoUseCase pagamentoUseCase) {
+        return new PedidoUseCaseImpl(pedidoGateway, pagamentoUseCase);
     }
 
 }

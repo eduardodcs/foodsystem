@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ClienteController implements IClienteController{
+public class ClienteControllerImpl implements IClienteController{
 
     @Autowired
     private IClienteUseCase clienteUseCase;

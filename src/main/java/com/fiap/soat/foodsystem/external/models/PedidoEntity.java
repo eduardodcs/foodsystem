@@ -32,10 +32,11 @@ public class PedidoEntity {
     @OneToMany(mappedBy = "pedido_id", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<PedidoProdutoEntity> listaPedidoProdutos = new ArrayList<>();
     private StatusPedido statusPedido;
-    private StatusPagamento statusPagamento;
     private BigDecimal valorTotal;
     @Column(length = 500)
     private String observacao;
     private LocalDateTime dataHoraCriacao;
+    @OneToMany(mappedBy="pedido")
+    private List<PagamentoEntity> pagamentos = new ArrayList<>();
 
 }

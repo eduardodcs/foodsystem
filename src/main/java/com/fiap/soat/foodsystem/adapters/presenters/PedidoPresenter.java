@@ -26,10 +26,13 @@ public class PedidoPresenter {
             produtoPedidoResponse.setSubTotal(produto.getSubTotal());
             return produtoPedidoResponse;
         }).toList();
+        List<PagamentoResponse> listaPagamentoResponse = pedido.getPagamentos().stream()
+                .map(pagamento -> modelMapper.map(pagamento, PagamentoResponse.class)).toList();
         ClienteResponse clienteResponse = modelMapper.map(pedido.getCliente(), ClienteResponse.class);
         PedidoResponse pedidoResponse = modelMapper.map(pedido, PedidoResponse.class);
         pedidoResponse.setCliente(clienteResponse);
         pedidoResponse.setListaPedidoProduto(produtoResponseList);
+        pedidoResponse.setPagamentos(listaPagamentoResponse);
         return pedidoResponse;
     }
 

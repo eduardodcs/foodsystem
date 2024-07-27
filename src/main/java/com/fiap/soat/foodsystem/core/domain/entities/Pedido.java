@@ -5,18 +5,19 @@ import com.fiap.soat.foodsystem.core.domain.enums.StatusPedido;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pedido {
 
     private Long id;
     private Cliente cliente;
-    private List<PedidoProduto> listaPedidoProdutos;
+    private List<PedidoProduto> listaPedidoProdutos = new ArrayList<>();
     private StatusPedido statusPedido;
-    private StatusPagamento statusPagamento;
     private BigDecimal valorTotalPedido;
     private String observacao;
     private LocalDateTime dataHoraCriacao;
+    private List<Pagamento> pagamentos = new ArrayList<>();
 
     public Pedido() {
     }
@@ -53,14 +54,6 @@ public class Pedido {
         this.statusPedido = statusPedido;
     }
 
-    public StatusPagamento getStatusPagamento() {
-        return statusPagamento;
-    }
-
-    public void setStatusPagamento(StatusPagamento statusPagamento) {
-        this.statusPagamento = statusPagamento;
-    }
-
     public BigDecimal getValorTotalPedido() {
         return valorTotalPedido;
     }
@@ -84,6 +77,14 @@ public class Pedido {
 
     public void setDataHoraCriacao(LocalDateTime dataHoraCriacao) {
         this.dataHoraCriacao = dataHoraCriacao;
+    }
+
+    public List<Pagamento> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(List<Pagamento> pagamentos) {
+        this.pagamentos = pagamentos;
     }
 }
 

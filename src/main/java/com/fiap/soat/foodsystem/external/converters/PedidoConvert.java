@@ -1,9 +1,11 @@
 package com.fiap.soat.foodsystem.external.converters;
 
 
+import com.fiap.soat.foodsystem.core.domain.entities.Pagamento;
 import com.fiap.soat.foodsystem.core.domain.entities.Pedido;
 import com.fiap.soat.foodsystem.core.domain.entities.PedidoProduto;
 import com.fiap.soat.foodsystem.external.models.ClienteEntity;
+import com.fiap.soat.foodsystem.external.models.PagamentoEntity;
 import com.fiap.soat.foodsystem.external.models.PedidoEntity;
 import com.fiap.soat.foodsystem.external.models.PedidoProdutoEntity;
 import org.modelmapper.ModelMapper;
@@ -23,14 +25,19 @@ public class PedidoConvert {
     @Autowired
     private PedidoProdutoConvert pedidoProdutoConvert;
 
+    @Autowired
+    private PagamentoConverter pagamentoConverter;
+
     public PedidoEntity pedidoToPedidoEntity(Pedido pedido) {
         PedidoEntity pedidoEntity = modelMapper.map(pedido, PedidoEntity.class);
         ClienteEntity clienteEntity = clienteConvert.clienteToClienteEntity(pedido.getCliente());
         List<PedidoProdutoEntity> listaPedidoProdutoEntity = pedido.getListaPedidoProdutos().stream()
                 .map(pedidoProduto -> pedidoProdutoConvert.pedidoProdutoToPedidoProdutoEntity(pedidoProduto, pedidoEntity)).toList();
+        List<PagamentoEntity> listaPagamentosEntity = pedido.getPagamentos().stream().map(pagamento -> modelMapper.map(pagamento, PagamentoEntity.class)).toList();
         pedidoEntity.setCliente(clienteEntity);
         pedidoEntity.setCliente_id(clienteEntity.getId());
         pedidoEntity.setListaPedidoProdutos(listaPedidoProdutoEntity);
+        pedidoEntity.setPagamentos(listaPagamentosEntity);
         return pedidoEntity;
     }
 
@@ -39,7 +46,14 @@ public class PedidoConvert {
         pedido.setId(pedidoEntity.getId());
         pedido.setCliente(clienteConvert.clienteEntityToCliente(pedidoEntity.getCliente()));
         pedido.setStatusPedido(pedidoEntity.getStatusPedido());
-        pedido.setStatusPagamento(pedidoEntity.getStatusPagamento());
+//        pedido.setStatusPagamento(pedidoEntity.getStatusPagamento());
+        pedido.setPagamentos(pedidoEntity.getPagamentos().stream()
+                .map(pagamentoEntity -> {
+                    Pagamento pagamento = pagamentoConverter.pagamentoEntityToPagamento(pagamentoEntity);
+                    pagamento.setPedido(pedido);
+                    return pagamento;
+                }).toList());
+
         pedido.setValorTotalPedido(pedidoEntity.getValorTotal());
         pedido.setDataHoraCriacao(pedidoEntity.getDataHoraCriacao());
         pedido.setObservacao(pedidoEntity.getObservacao());

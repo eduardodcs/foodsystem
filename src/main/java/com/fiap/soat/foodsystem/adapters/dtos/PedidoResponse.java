@@ -20,9 +20,8 @@ public class PedidoResponse {
     private ClienteResponse cliente;
     private List<PedidoProdutoResponse> listaPedidoProduto;
     private StatusPedido statusPedido;
-    private StatusPagamento statusPagamento;
     private BigDecimal valorTotal;
     private LocalDateTime dataHoraCriacao;
     private String observacao;
-    private String qRCode;
+    private List<PagamentoResponse> pagamentos;
 }
