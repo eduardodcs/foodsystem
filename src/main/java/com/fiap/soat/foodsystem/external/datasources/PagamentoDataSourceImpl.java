@@ -15,7 +15,7 @@ public class PagamentoDataSourceImpl implements IPagamentoDataSource {
     private PagamentoConverter pagamentoConverter;
 
     @Autowired
-    private IPagamentoRepository PagamentoRepository;
+    private IPagamentoRepository pagamentoRepository;
 
     @Override
     public Pagamento save(Pagamento pagamento) {
@@ -24,13 +24,13 @@ public class PagamentoDataSourceImpl implements IPagamentoDataSource {
 
     @Override
     public Pagamento findByPedidoId(Long pedidoId) {
-        return null;
+        return pagamentoConverter.pagamentoEntityToPagamento(pagamentoRepository.findByPedidoId(pedidoId));
     }
 
     @Override
     public Pagamento update(Pagamento pagamento) {
         PagamentoEntity pagamentoEntity = pagamentoConverter.pagamentoToPagamentoEntity(pagamento);
-        PagamentoEntity saved = PagamentoRepository.save(pagamentoEntity);
+        PagamentoEntity saved = pagamentoRepository.save(pagamentoEntity);
         return pagamentoConverter.pagamentoEntityToPagamento(saved);
 
     }

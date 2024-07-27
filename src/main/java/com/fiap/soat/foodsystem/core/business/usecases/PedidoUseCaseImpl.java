@@ -35,6 +35,7 @@ public class PedidoUseCaseImpl implements IPedidoUseCase {
 
     @Override
     public List<Pedido> findAll() {
+
         return pedidoGateway.findAll();
     }
 

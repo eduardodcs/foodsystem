@@ -1,11 +1,13 @@
 package com.fiap.soat.foodsystem.external.handlers;
 
 import com.fiap.soat.foodsystem.adapters.controllers.IPagamentoController;
+import com.fiap.soat.foodsystem.adapters.dtos.PagamentoResponse;
 import com.fiap.soat.foodsystem.adapters.dtos.pagbank.OrderResponse;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -23,6 +25,14 @@ public class PagamentoHandler {
     public void callback(@PathVariable("pedidoId") Long pedidoId, @RequestBody OrderResponse orderResponse) {
         System.out.println(orderResponse);
         pagamentoController.callbackPagamentoPagBank(pedidoId, orderResponse);
+    }
+
+    @GetMapping("pedido/{pedidoId}")
+    @Tag(name = "Pagamento")
+    @Operation(summary = "Consulta status pagamento por pedido")
+    public ResponseEntity<PagamentoResponse> consultaStatus(@PathVariable("pedidoId") Long pedidoId) {
+        PagamentoResponse pagamentResponse = pagamentoController.consultaStatus(pedidoId);
+        return ResponseEntity.ok(pagamentResponse);
     }
 
 

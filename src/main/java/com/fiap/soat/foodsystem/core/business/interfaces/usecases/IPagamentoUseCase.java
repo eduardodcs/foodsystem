@@ -6,7 +6,7 @@ import com.fiap.soat.foodsystem.core.domain.entities.Pedido;
 public interface IPagamentoUseCase {
 
     Pagamento gerarPagamento(Pedido pedido);
-    Pagamento consultarStatusPagamento(Pagamento pagamento);
+    Pagamento consultarStatusPagamento(Long pedidoId);
     Pagamento atualizarPagamento(Pagamento pagamento);
 
 }

@@ -29,8 +29,8 @@ public class PagamentoUseCaseImpl implements IPagamentoUseCase {
     }
 
     @Override
-    public Pagamento consultarStatusPagamento(Pagamento pagamento) {
-        return pagamentoGateway.consultarStatusPagamento(pagamento);
+    public Pagamento consultarStatusPagamento(Long pedidoId) {
+        return pagamentoGateway.consultarStatusPagamento(pedidoId);
     }
 
     @Override

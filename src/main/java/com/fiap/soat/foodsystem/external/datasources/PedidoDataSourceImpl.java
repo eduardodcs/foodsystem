@@ -5,6 +5,7 @@ import com.fiap.soat.foodsystem.adapters.gateways.datasource.IPedidoDataSource;
 import com.fiap.soat.foodsystem.core.domain.entities.Pedido;
 import com.fiap.soat.foodsystem.core.domain.enums.StatusPedido;
 import com.fiap.soat.foodsystem.external.converters.PedidoConvert;
+import com.fiap.soat.foodsystem.external.datasources.jpql.PedidoJpql;
 import com.fiap.soat.foodsystem.external.models.PedidoEntity;
 import com.fiap.soat.foodsystem.external.repositories.IPedidoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class PedidoDataSourceImpl implements IPedidoDataSource {
     private IPedidoRepository pedidoRepository;
     @Autowired
     private PedidoConvert pedidoConvert;
+    @Autowired
+    private PedidoJpql pedidoJpql;
 
     @Override
     public Pedido findById(Long id) {
@@ -30,7 +33,8 @@ public class PedidoDataSourceImpl implements IPedidoDataSource {
 
     @Override
     public List<Pedido> findAll() {
-        List<PedidoEntity> list = pedidoRepository.findAll();
+//        List<PedidoEntity> list = pedidoRepository.findAll();
+        List<PedidoEntity> list = pedidoJpql.consultaPedidoOrdenado();
         return list.stream().map(pedidoEntity -> pedidoConvert.pedidoEntityToPedido(pedidoEntity)).toList();
     }
 

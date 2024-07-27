@@ -20,6 +20,11 @@ public class PedidoHandler {
     @Autowired
     private IPedidoController pedidoController;
 
+    @GetMapping
+    public ResponseEntity<List<PedidoResponse>> getAllPedidos() {
+        List<PedidoResponse> all = pedidoController.findAll();
+        return ResponseEntity.ok(all);
+    }
 
     @PostMapping
     @Transactional

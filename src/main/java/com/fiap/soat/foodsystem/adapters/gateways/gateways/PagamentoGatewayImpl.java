@@ -33,8 +33,8 @@ public class PagamentoGatewayImpl implements IPagamentoGateway {
     }
 
     @Override
-    public Pagamento consultarStatusPagamento(Pagamento pagamento) {
-        return null;
+    public Pagamento consultarStatusPagamento(Long pedidoId) {
+        return pagamentoDataSource.findByPedidoId(pedidoId);
     }
 
     @Override
