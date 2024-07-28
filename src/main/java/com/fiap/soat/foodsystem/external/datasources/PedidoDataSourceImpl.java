@@ -19,6 +19,8 @@ public class PedidoDataSourceImpl implements IPedidoDataSource {
 
     @Autowired
     private IPedidoRepository pedidoRepository;
+//    @Autowired
+//    private IPedidoProdutoRepository pedidoProdutoRepository;
     @Autowired
     private PedidoConvert pedidoConvert;
     @Autowired
@@ -61,5 +63,10 @@ public class PedidoDataSourceImpl implements IPedidoDataSource {
     public List<Pedido> findByStatus(StatusPedido status) {
         List<PedidoEntity> list = pedidoRepository.findByStatusPedido(status);
         return list.stream().map(pedidoEntity -> pedidoConvert.pedidoEntityToPedido(pedidoEntity)).toList();
+    }
+
+    @Override
+    public void deletePedidoProdutoByPedidoId(Long pedidoId) {
+        pedidoJpql.deletePedidoProdutoByPedidoId(pedidoId);
     }
 }

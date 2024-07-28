@@ -17,7 +17,7 @@ public class ProdutoPresenter {
     public ProdutoResponse toProdutoResponse(Produto produto) {
         CategoriaResponse categoriaResponse = modelMapper.map(produto.getCategoria(), CategoriaResponse.class);
         ProdutoResponse produtoResponse = modelMapper.map(produto, ProdutoResponse.class);
-        produtoResponse.setCategoriaResponse(categoriaResponse);
+        produtoResponse.setCategoria(categoriaResponse);
         return produtoResponse;
     }
 }

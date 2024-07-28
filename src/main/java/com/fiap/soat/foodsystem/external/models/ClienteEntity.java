@@ -2,7 +2,6 @@ package com.fiap.soat.foodsystem.external.models;
 import jakarta.persistence.*;
 import lombok.ToString;
 
-@ToString
 @Entity
 @Table(name = "Cliente")
 public class ClienteEntity {

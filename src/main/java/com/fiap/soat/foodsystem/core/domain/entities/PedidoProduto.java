@@ -13,10 +13,6 @@ public class PedidoProduto {
     public PedidoProduto() {
     }
 
-    public PedidoProduto(Produto produto) {
-        this.produto = produto;
-    }
-
     public Pedido getPedido() {
         return pedido;
     }

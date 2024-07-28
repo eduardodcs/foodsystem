@@ -5,11 +5,13 @@ import com.fiap.soat.foodsystem.core.business.interfaces.usecases.IPagamentoUseC
 import com.fiap.soat.foodsystem.core.business.interfaces.usecases.IPedidoUseCase;
 import com.fiap.soat.foodsystem.core.domain.entities.Pagamento;
 import com.fiap.soat.foodsystem.core.domain.entities.Pedido;
+import com.fiap.soat.foodsystem.core.domain.entities.PedidoProduto;
 import com.fiap.soat.foodsystem.core.domain.enums.StatusPagamento;
 import com.fiap.soat.foodsystem.core.domain.enums.StatusPedido;
 import com.fiap.soat.foodsystem.core.exceptions.BusinessException;
 import com.fiap.soat.foodsystem.core.exceptions.NotFoundException;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.Arrays;
 import java.util.List;
@@ -26,6 +28,9 @@ public class PedidoUseCaseImpl implements IPedidoUseCase {
 
     @Override
     public Pedido findById(Long id) {
+        if (id == null) {
+            throw new BusinessException("Id não pode ser nulo");
+        }
         Pedido pedido = pedidoGateway.findById(id);
         if (pedido == null) {
             throw new NotFoundException("Pedido não encontrado para o id " + id);
@@ -35,7 +40,6 @@ public class PedidoUseCaseImpl implements IPedidoUseCase {
 
     @Override
     public List<Pedido> findAll() {
-
         return pedidoGateway.findAll();
     }
 
@@ -47,10 +51,23 @@ public class PedidoUseCaseImpl implements IPedidoUseCase {
         if (pedido.getListaPedidoProdutos().isEmpty()) {
             throw new BusinessException("O pedido precisa ter pelo menos um produto.");
         }
+        calcularSubTotalProduto(pedido);
+        calcularTotalPedido(pedido);
         Pedido pedidoSaved = pedidoGateway.save(pedido);
         pedidoSaved.setPagamentos(Arrays.asList(pagamentoUseCase.gerarPagamento(pedidoSaved)));
-//        Pedido updated = update(pedidoSaved);
         return pedidoSaved;
+    }
+
+    private static void calcularTotalPedido(Pedido pedido) {
+        pedido.setValorTotalPedido(pedido.getListaPedidoProdutos().stream()
+                .map(PedidoProduto::getSubTotal)
+                .reduce(BigDecimal.ZERO, BigDecimal::add));
+    }
+
+    private static void calcularSubTotalProduto(Pedido pedido) {
+        pedido.getListaPedidoProdutos().forEach(pedidoProduto ->
+            pedidoProduto.setSubTotal(pedidoProduto.getPrecoUnitario()
+                    .multiply(BigDecimal.valueOf(pedidoProduto.getQtdeProduto()))));
     }
 
     @Override
@@ -67,13 +84,25 @@ public class PedidoUseCaseImpl implements IPedidoUseCase {
                 && (StatusPagamento.FINALIZADO.equals(pedidoOriginal.getPagamentos().get(0).getStatusPagamento()))) {
             throw new BusinessException("Não é possível alterar pedido com status de pagamento finalizado.");
         }
+        calcularSubTotalProduto(pedido);
+        calcularTotalPedido(pedido);
+        pedidoGateway.deletePedidoProdutoByPedidoId(pedido.getId());
         return pedidoGateway.update(pedido);
     }
 
     @Override
-    public List<Pedido> findByStatus(Integer status) {
-        StatusPedido statusPedido = Arrays.stream(StatusPedido.values()).filter(e -> e.ordinal() == status)
-                .findAny().orElseThrow(() -> new BusinessException("O status informado é inválido."));;
+    public List<Pedido> findByStatus(Integer statusValue) {
+        StatusPedido statusPedido = StatusPedido.getByValue(statusValue);
         return pedidoGateway.findByStatus(statusPedido);
     }
+
+    @Override
+    public void alterarStatus(Long pedidoId, Integer statusValue) {
+        StatusPedido statusPedido = StatusPedido.getByValue(statusValue);
+        Pedido pedido = findById(pedidoId);
+        pedido.setStatusPedido(statusPedido);
+        pedidoGateway.update(pedido);
+    }
+
+
 }

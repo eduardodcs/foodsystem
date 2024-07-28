@@ -1,12 +1,9 @@
 package com.fiap.soat.foodsystem.external.models;
 
-import com.fiap.soat.foodsystem.core.domain.enums.StatusPagamento;
 import com.fiap.soat.foodsystem.core.domain.enums.StatusPedido;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.ToString;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -15,8 +12,6 @@ import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-@ToString
 @Entity
 @Table(name = "Pedido")
 public class PedidoEntity {
@@ -39,4 +34,75 @@ public class PedidoEntity {
     @OneToMany(mappedBy="pedido")
     private List<PagamentoEntity> pagamentos = new ArrayList<>();
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Long getCliente_id() {
+        return cliente_id;
+    }
+
+    public void setCliente_id(Long cliente_id) {
+        this.cliente_id = cliente_id;
+    }
+
+    public ClienteEntity getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(ClienteEntity cliente) {
+        this.cliente = cliente;
+    }
+
+    public List<PedidoProdutoEntity> getListaPedidoProdutos() {
+        return listaPedidoProdutos;
+    }
+
+    public void setListaPedidoProdutos(List<PedidoProdutoEntity> listaPedidoProdutos) {
+        this.listaPedidoProdutos = listaPedidoProdutos;
+    }
+
+    public StatusPedido getStatusPedido() {
+        return statusPedido;
+    }
+
+    public void setStatusPedido(StatusPedido statusPedido) {
+        this.statusPedido = statusPedido;
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal;
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+
+    public String getObservacao() {
+        return observacao;
+    }
+
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
+    }
+
+    public LocalDateTime getDataHoraCriacao() {
+        return dataHoraCriacao;
+    }
+
+    public void setDataHoraCriacao(LocalDateTime dataHoraCriacao) {
+        this.dataHoraCriacao = dataHoraCriacao;
+    }
+
+    public List<PagamentoEntity> getPagamentos() {
+        return pagamentos;
+    }
+
+    public void setPagamentos(List<PagamentoEntity> pagamentos) {
+        this.pagamentos = pagamentos;
+    }
 }
