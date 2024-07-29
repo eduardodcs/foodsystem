@@ -45,4 +45,9 @@ public class PedidoGatewayImpl implements IPedidoGateway {
     public List<Pedido> findByStatus(StatusPedido status) {
         return pedidoDataSource.findByStatus(status);
     }
+
+    @Override
+    public void deletePedidoProdutoByPedidoId(Long id) {
+        pedidoDataSource.deletePedidoProdutoByPedidoId(id);
+    }
 }

@@ -20,7 +20,7 @@ public class PedidoPresenter {
             PedidoProdutoResponse produtoPedidoResponse = new PedidoProdutoResponse();
             produtoPedidoResponse.setProduto(modelMapper.map(produto.getProduto(), ProdutoResponse.class));
             CategoriaResponse categoriaResponse = modelMapper.map(produto.getProduto().getCategoria(), CategoriaResponse.class);
-            produtoPedidoResponse.getProduto().setCategoriaResponse(categoriaResponse);
+            produtoPedidoResponse.getProduto().setCategoria(categoriaResponse);
             produtoPedidoResponse.setQtdeProduto(produto.getQtdeProduto());
             produtoPedidoResponse.setPrecoUnitario(produto.getPrecoUnitario());
             produtoPedidoResponse.setSubTotal(produto.getSubTotal());

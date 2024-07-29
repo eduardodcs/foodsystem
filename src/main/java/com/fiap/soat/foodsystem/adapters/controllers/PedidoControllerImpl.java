@@ -66,4 +66,10 @@ public class PedidoControllerImpl implements IPedidoController {
         return pedidos.stream().map(pedido -> pedidoPresenter.toPedidoResponse(pedido)).toList();
     }
 
+    @Override
+    public void atualizarStatus(Long pedidoId, Integer status) {
+        pedidoUseCase.alterarStatus(pedidoId, status);
+    }
+
+
 }

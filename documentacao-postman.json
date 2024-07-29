@@ -1,0 +1,659 @@
+{
+	"info": {
+		"_postman_id": "9dfdbedd-2e14-4a63-a851-1d3894b4f16d",
+		"name": "Food System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "13352038"
+	},
+	"item": [
+		{
+			"name": "Categoria",
+			"item": [
+				{
+					"name": "Obter Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categoria",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Categoria Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categoria/:categoraId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categoria",
+								":categoraId"
+							],
+							"variable": [
+								{
+									"key": "categoraId",
+									"value": ""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nome\": \"Nova\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categoria",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Editar Categoria",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 4,\n    \"nome\": \"Nova Editada\",\n    \"statusAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/categoria",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categoria"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar/Inativar Categoria Por Id",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/categoria/inativar/:categoriaId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"categoria",
+								"inativar",
+								":categoriaId"
+							],
+							"variable": [
+								{
+									"key": "categoriaId",
+									"value": "1",
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cliente",
+			"item": [
+				{
+					"name": "Buscar todos os clientes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cliente",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cliente por CPF",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cliente/:cpf",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cliente",
+								":cpf"
+							],
+							"variable": [
+								{
+									"key": "cpf",
+									"value": "18900120093",
+									"description": "18900120093"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar cliente pelo Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/cliente/id/:clienteId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cliente",
+								"id",
+								":clienteId"
+							],
+							"variable": [
+								{
+									"key": "clienteId",
+									"value": "1",
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar cliente",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"cpf\": \"33484545810\",\n  \"nome\": \"Teste da Silva\",\n  \"telefone\": \"(44)88681-4908\",\n  \"email\": \"teste@gmail.com\",\n  \"statusAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/cliente",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar cliente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": 6,\n  \"cpf\": \"33484545810\",\n  \"nome\": \"Teste da Silva Costa\",\n  \"telefone\": \"(44)88681-4908\",\n  \"email\": \"teste@gmail.com\",\n  \"statusAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/cliente",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"cliente"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Pedido",
+			"item": [
+				{
+					"name": "Buscar pedido por status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/pedido/status/:codStatus",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"pedido",
+								"status",
+								":codStatus"
+							],
+							"variable": [
+								{
+									"key": "codStatus",
+									"value": "0",
+									"description": "0"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar pedido pelo Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/pedido/:pedidoId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"pedido",
+								":pedidoId"
+							],
+							"variable": [
+								{
+									"key": "pedidoId",
+									"value": "1",
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Buscar pedidos ordenados",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/pedido",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Consulta status pagamento pelo Id do pedido",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/pagamento/pedido/:pedidoId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"pagamento",
+								"pedido",
+								":pedidoId"
+							],
+							"variable": [
+								{
+									"key": "pedidoId",
+									"value": "1",
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enviar Pedido",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"idCliente\": 1,\n    \"listaPedidoProduto\": [\n        {\n            \"idProduto\": 1,\n            \"qtdeProduto\": 2,\n            \"precoUnitario\": 30,\n            \"subTotal\": 150\n        },\n        {\n            \"idProduto\": 2,\n            \"qtdeProduto\": 1,\n            \"precoUnitario\": 10,\n            \"subTotal\": 150\n        }\n    ],\n    \"valorTotal\": 150,\n    \"observacao\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/pedido",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar pedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"id\":4,\n    \"idCliente\": 1,\n    \"listaPedidoProduto\": [\n        {\n            \"idProduto\": 1,\n            \"qtdeProduto\": 1,\n            \"precoUnitario\": 20,\n            \"subTotal\": 150\n        },\n        {\n            \"idProduto\": 3,\n            \"qtdeProduto\": 1,\n            \"precoUnitario\": 13,\n            \"subTotal\": 150\n        }\n    ],\n    \"valorTotal\": 300,\n    \"observacao\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/pedido",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"pedido"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar status pedido",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{   \n    \"id\":4,\n    \"idCliente\": 1,\n    \"listaPedidoProduto\": [\n        {\n            \"idProduto\": 1,\n            \"qtdeProduto\": 1,\n            \"precoUnitario\": 150,\n            \"subTotal\": 150\n        },\n        {\n            \"idProduto\": 1,\n            \"qtdeProduto\": 1,\n            \"precoUnitario\": 150,\n            \"subTotal\": 150\n        }\n    ],\n    \"valorTotal\": 300,\n    \"observacao\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/pedido/alterar-status/:pedidoId/:codStatus",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"pedido",
+								"alterar-status",
+								":pedidoId",
+								":codStatus"
+							],
+							"variable": [
+								{
+									"key": "pedidoId",
+									"value": "1",
+									"description": "1"
+								},
+								{
+									"key": "codStatus",
+									"value": "2",
+									"description": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Produto",
+			"item": [
+				{
+					"name": "Obter Produto Por Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produto/:produtoId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produto",
+								":produtoId"
+							],
+							"variable": [
+								{
+									"key": "produtoId",
+									"value": "1",
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obter Produto Por Categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{host}}/produto/categoria/:categoriaId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produto",
+								"categoria",
+								":categoriaId"
+							],
+							"variable": [
+								{
+									"key": "categoriaId",
+									"value": "1",
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Cadastrar Produto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nome\": \"Novo Produto\",\n  \"descricao\": \"Teste\",\n  \"preco\": 25,\n  \"idCategoria\": 3,\n  \"statusAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/produto",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alterar produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"nome\": \"Novo Produto Alterado\",\n    \"descricao\": \"Teste\",\n    \"preco\": 25,\n    \"idCategoria\": 3,\n    \"statusAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/produto",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Ativar/Desativar Produto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 1,\n    \"nome\": \"Novo Produto Alterado\",\n    \"descricao\": \"Teste\",\n    \"preco\": 25,\n    \"idCategoria\": 3,\n    \"statusAtivo\": true\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{host}}/produto/inativar/:produtoId",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"produto",
+								"inativar",
+								":produtoId"
+							],
+							"variable": [
+								{
+									"key": "produtoId",
+									"value": "1",
+									"description": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Webhook pagamento",
+			"item": [
+				{
+					"name": "Callbak Pagamento PagBank",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"id\": \"ORDE_354BB038-2178-480A-BE3F-BC9E13B0141E\",\n  \"reference_id\": \"8\",\n  \"created_at\": \"2024-07-27T11:22:32.260-03:00\",\n  \"customer\": {\n    \"name\": \"Thiago Santos\",\n    \"email\": \"thiago@gmail.com\",\n    \"tax_id\": \"13737222070\"\n  },\n  \"qr_codes\": [\n    {\n      \"id\": \"QRCO_7CCDD655-D34B-4EA7-8522-B79F5371135D\",\n      \"expiration_date\": \"2024-07-28T11:22:31.000-03:00\",\n      \"amount\": {\n        \"value\": 150\n      },\n      \"text\": \"00020101021226850014br.gov.bcb.pix2563api-h.pagseguro.com/pix/v2/7CCDD655-D34B-4EA7-8522-B79F5371135D27600016BR.COM.PAGSEGURO01367CCDD655-D34B-4EA7-8522-B79F5371135D52048999530398654041.505802BR5922Eduardo Diego da Costa6014Artur Nogueira62070503***63044EF6\",\n      \"arrangements\": [\n        \"PIX\"\n      ],\n      \"links\": [\n        {\n          \"rel\": \"QRCODE.PNG\",\n          \"href\": \"https://sandbox.api.pagseguro.com/qrcode/QRCO_7CCDD655-D34B-4EA7-8522-B79F5371135D/png\",\n          \"media\": \"image/png\",\n          \"type\": \"GET\"\n        },\n        {\n          \"rel\": \"QRCODE.BASE64\",\n          \"href\": \"https://sandbox.api.pagseguro.com/qrcode/QRCO_7CCDD655-D34B-4EA7-8522-B79F5371135D/base64\",\n          \"media\": \"text/plain\",\n          \"type\": \"GET\"\n        }\n      ]\n    }\n  ],\n  \"charges\": [\n    {\n      \"id\": \"CHAR_7CCDD655-D34B-4EA7-8522-B79F5371135D\",\n      \"reference_id\": \"8\",\n      \"status\": \"PAID\",\n      \"created_at\": \"2024-07-27T11:22:49.631-03:00\",\n      \"paid_at\": \"2024-07-27T11:22:51.064-03:00\",\n      \"amount\": {\n        \"value\": 150,\n        \"currency\": \"BRL\",\n        \"summary\": {\n          \"total\": 150,\n          \"paid\": 150,\n          \"refunded\": 0\n        }\n      },\n      \"payment_response\": {\n        \"code\": \"20000\",\n        \"message\": \"SUCESSO\"\n      },\n      \"payment_method\": {\n        \"type\": \"PIX\",\n        \"pix\": {\n          \"notification_id\": \"NTF_73EEC48A-BE4D-4F34-9488-FB2590860B2F\",\n          \"end_to_end_id\": \"9d20c0b5aed24e2480ee63fbbf8e9bdc\",\n          \"holder\": {\n            \"name\": \"API-PIX Payer Mock\",\n            \"tax_id\": \"***931180**\"\n          }\n        }\n      },\n      \"links\": [\n        {\n          \"rel\": \"SELF\",\n          \"href\": \"https://internal.sandbox.api.pagseguro.com/charges/CHAR_7CCDD655-D34B-4EA7-8522-B79F5371135D\",\n          \"media\": \"application/json\",\n          \"type\": \"GET\"\n        },\n        {\n          \"rel\": \"CHARGE.CANCEL\",\n          \"href\": \"https://internal.sandbox.api.pagseguro.com/charges/CHAR_7CCDD655-D34B-4EA7-8522-B79F5371135D/cancel\",\n          \"media\": \"application/json\",\n          \"type\": \"POST\"\n        }\n      ],\n      \"metadata\": {}\n    }\n  ],\n  \"notification_urls\": [\n    \"https://distinct-monitor-topical.ngrok-free.app/pagamento/callback/8\"\n  ],\n  \"links\": [\n    {\n      \"rel\": \"SELF\",\n      \"href\": \"https://sandbox.api.pagseguro.com/orders/ORDE_354BB038-2178-480A-BE3F-BC9E13B0141E\",\n      \"media\": \"application/json\",\n      \"type\": \"GET\"\n    },\n    {\n      \"rel\": \"PAY\",\n      \"href\": \"https://sandbox.api.pagseguro.com/orders/ORDE_354BB038-2178-480A-BE3F-BC9E13B0141E/pay\",\n      \"media\": \"application/json\",\n      \"type\": \"POST\"\n    }\n  ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://distinct-monitor-topical.ngrok-free.app/pagamento/callback/8",
+							"protocol": "https",
+							"host": [
+								"distinct-monitor-topical",
+								"ngrok-free",
+								"app"
+							],
+							"path": [
+								"pagamento",
+								"callback",
+								"8"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "host",
+			"value": "http://localhost:8080",
+			"type": "string"
+		}
+	]
+}

@@ -15,4 +15,5 @@ public interface IPedidoController {
     void cancel(Long id);
     PedidoResponse update(PedidoReceived pedidoReceived);
     List<PedidoResponse> findByStatus(Integer status);
+    void atualizarStatus(Long pedidoId, Integer status);
 }

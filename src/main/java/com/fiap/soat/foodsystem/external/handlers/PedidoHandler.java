@@ -70,6 +70,10 @@ public class PedidoHandler {
         pedidoController.cancel(id);
     }
 
-
-
+    @PutMapping("alterar-status/{pedidoId}/{status}")
+    @Transactional
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void alterarStatus(@PathVariable("pedidoId") Long pedidoId, @PathVariable("status") Integer status){
+        pedidoController.atualizarStatus(pedidoId, status);
+    }
 }

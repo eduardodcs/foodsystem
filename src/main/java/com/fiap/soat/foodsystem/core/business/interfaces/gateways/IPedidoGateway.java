@@ -14,4 +14,5 @@ public interface IPedidoGateway {
     void cancel(Pedido pedido);
     Pedido update(Pedido pedido);
     List<Pedido> findByStatus(StatusPedido status);
+    void deletePedidoProdutoByPedidoId(Long id);
 }

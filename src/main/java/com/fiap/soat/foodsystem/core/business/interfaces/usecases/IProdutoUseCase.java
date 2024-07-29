@@ -12,4 +12,5 @@ public interface IProdutoUseCase {
     Produto save(Produto produto);
     Produto update(Produto produto);
     void delete(Long id);
+
 }

@@ -15,7 +15,7 @@ public class ProdutoResponse {
     private String nome;
     private String descricao;
     private BigDecimal preco;
-    private CategoriaResponse categoriaResponse;
+    private CategoriaResponse categoria;
     private boolean statusAtivo;
     private LocalDateTime dataHoraCriacao;
 }
