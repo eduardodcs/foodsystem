@@ -1,3 +1,4 @@
+
 # FOOD SYSTEM
 
 Projeto FIAP
@@ -37,3 +38,16 @@ Subir container (Profile default - Banco de dados em memória H2)
 ```sh
 docker run -d --name food-system -p 8080:8080 food-system
 ```
+
+# foodsystem
+
+## Comandos Kubernets
+
+## kubectl apply -f postgres-deployment.yml
+
+## kubectl apply -f postgres-service.yml
+
+## kubectl apply -f food-system-deployment.yml
+
+## kubectl apply -f food-system-service.yml
+
