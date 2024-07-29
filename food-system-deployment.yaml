@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: food-system
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: food-system
+  template:
+    metadata:
+      labels:
+        app: food-system
+    spec:
+      containers:
+        - name: food-system
+          image: eddcesilva/food-system:1.0.0
+          env:
+            - name: FS_DB_HOST
+              value: "postgres:5432"
+            - name: FS_DB_USER
+              value: "systemdb_user"
+            - name: FS_DB_PASSWORD
+              value: "1234"
+            - name: FS_DB_NAME
+              value: "systemdb"
+            - name: SPRING_PROFILES_ACTIVE
+              value: "deploy"
+          ports:
+            - containerPort: 8080
