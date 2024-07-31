@@ -6,8 +6,6 @@ Software Architecture / Turma 6
 - Eduardo Silva - RM352655 (Discord: Eduardo Silva - 6SOAT / RM352655)
 - Edvan Jeronimo - RM353253 (Discord: Edvan Jeronimo - RM353253)
 - Felipe Ghidini - RM353787 (Discord: Felipe Ghidini - 6SOAT-RM353787)
-- Fernanda Vidal - RM353413 (Discord: Fernanda Vidal - RM 353413)
-- Halisson Brancalhão - RM354155 (Discord: Hallison Brancalhão - RM354155)
 
 Event Storming
 [Miro - Event Storming](https://miro.com/app/board/uXjVKPwP9b0=/?share_link_id=965497713343)
