@@ -35,3 +35,5 @@ Subir container (Profile default - Banco de dados em memória H2)
 ```sh
 docker run -d --name food-system -p 8080:8080 food-system
 ```
+## Desenho_Arquitetura_TechChallenge_FoodSystem
+![image](https://github.com/user-attachments/assets/795cf74d-1393-4192-87e9-919f60c77628)
