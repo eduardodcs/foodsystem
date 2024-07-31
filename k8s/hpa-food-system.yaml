@@ -1,0 +1,133 @@
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  creationTimestamp: '2024-07-30T03:24:23Z'
+  managedFields:
+    - apiVersion: autoscaling/v2
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:spec:
+          f:behavior:
+            .: {}
+            f:scaleDown:
+              .: {}
+              f:policies: {}
+              f:selectPolicy: {}
+              f:stabilizationWindowSeconds: {}
+            f:scaleUp:
+              .: {}
+              f:policies: {}
+              f:selectPolicy: {}
+              f:stabilizationWindowSeconds: {}
+          f:maxReplicas: {}
+          f:metrics: {}
+          f:minReplicas: {}
+          f:scaleTargetRef:
+            f:apiVersion: {}
+            f:kind: {}
+            f:name: {}
+      manager: rancher
+      operation: Update
+      time: '2024-07-30T04:32:37Z'
+    - apiVersion: autoscaling/v2
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:status:
+          f:conditions:
+            .: {}
+            k:{"type":"AbleToScale"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"ScalingActive"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"ScalingLimited"}:
+              .: {}
+              f:lastTransitionTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+          f:currentMetrics: {}
+          f:currentReplicas: {}
+          f:desiredReplicas: {}
+          f:lastScaleTime: {}
+      manager: k3s
+      operation: Update
+      subresource: status
+      time: '2024-07-30T04:35:03Z'
+  name: hpa-system
+  namespace: food-system
+  resourceVersion: '91425'
+  uid: 71cc2001-f256-48e5-85fd-db9288acfe07
+spec:
+  behavior:
+    scaleDown:
+      policies:
+        - periodSeconds: 15
+          type: Percent
+          value: 20
+      selectPolicy: Max
+      stabilizationWindowSeconds: 300
+    scaleUp:
+      policies:
+        - periodSeconds: 15
+          type: Pods
+          value: 2
+        - periodSeconds: 15
+          type: Percent
+          value: 50
+      selectPolicy: Max
+      stabilizationWindowSeconds: 0
+  maxReplicas: 10
+  metrics:
+    - resource:
+        name: cpu
+        target:
+          averageUtilization: 80
+          type: Utilization
+      type: Resource
+  minReplicas: 1
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: food-system
+status:
+  conditions:
+    - lastTransitionTime: '2024-07-30T03:24:38Z'
+      message: >-
+        recent recommendations were higher than current one, applying the
+        highest recent recommendation
+      reason: ScaleDownStabilized
+      status: 'True'
+      type: AbleToScale
+    - lastTransitionTime: '2024-07-30T04:26:02Z'
+      message: >-
+        the HPA was able to successfully calculate a replica count from cpu
+        resource utilization (percentage of request)
+      reason: ValidMetricFound
+      status: 'True'
+      type: ScalingActive
+    - lastTransitionTime: '2024-07-30T04:34:48Z'
+      message: the desired count is within the acceptable range
+      reason: DesiredWithinRange
+      status: 'False'
+      type: ScalingLimited
+  currentMetrics:
+    - resource:
+        current:
+          averageUtilization: 0
+          averageValue: 2m
+        name: cpu
+      type: Resource
+  currentReplicas: 1
+  desiredReplicas: 1
+  lastScaleTime: '2024-07-30T04:31:47Z'

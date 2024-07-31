@@ -1,0 +1,44 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  annotations:
+    cattle.io/status: >-
+      {"Conditions":[{"Type":"ResourceQuotaInit","Status":"True","Message":"","LastUpdateTime":"2024-07-30T02:47:50Z"},{"Type":"InitialRolesPopulated","Status":"True","Message":"","LastUpdateTime":"2024-07-30T02:47:51Z"}]}
+    field.cattle.io/containerDefaultResourceLimit: '{}'
+    field.cattle.io/projectId: local:p-vfz7g
+    lifecycle.cattle.io/create.namespace-auth: 'true'
+  creationTimestamp: '2024-07-30T02:47:49Z'
+  finalizers:
+    - controller.cattle.io/namespace-auth
+  labels:
+    field.cattle.io/projectId: p-vfz7g
+    kubernetes.io/metadata.name: food-system
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:cattle.io/status: {}
+            f:field.cattle.io/containerDefaultResourceLimit: {}
+            f:field.cattle.io/projectId: {}
+            f:lifecycle.cattle.io/create.namespace-auth: {}
+          f:finalizers:
+            .: {}
+            v:"controller.cattle.io/namespace-auth": {}
+          f:labels:
+            .: {}
+            f:field.cattle.io/projectId: {}
+            f:kubernetes.io/metadata.name: {}
+      manager: rancher
+      operation: Update
+      time: '2024-07-30T02:47:50Z'
+  name: food-system
+  resourceVersion: '54582'
+  uid: fdd5261f-5b46-4279-8239-2e6bff971b83
+spec:
+  finalizers:
+    - kubernetes
+status:
+  phase: Active

@@ -1,0 +1,69 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    field.cattle.io/targetWorkloadIds: '["food-system/food-system"]'
+    management.cattle.io/ui-managed: 'true'
+  creationTimestamp: '2024-07-30T02:47:54Z'
+  labels:
+    workload.user.cattle.io/workloadselector: apps.deployment-food-system-food-system
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:field.cattle.io/targetWorkloadIds: {}
+            f:management.cattle.io/ui-managed: {}
+          f:labels:
+            .: {}
+            f:workload.user.cattle.io/workloadselector: {}
+          f:ownerReferences:
+            .: {}
+            k:{"uid":"4791fa0a-2161-4b48-be1b-1bba4c7f320c"}: {}
+        f:spec:
+          f:internalTrafficPolicy: {}
+          f:ports:
+            .: {}
+            k:{"port":8080,"protocol":"TCP"}:
+              .: {}
+              f:name: {}
+              f:port: {}
+              f:protocol: {}
+              f:targetPort: {}
+          f:selector: {}
+          f:sessionAffinity: {}
+          f:type: {}
+      manager: rancher
+      operation: Update
+      time: '2024-07-30T03:32:55Z'
+  name: food-system
+  namespace: food-system
+  ownerReferences:
+    - apiVersion: apps/v1
+      controller: true
+      kind: Deployment
+      name: food-system
+      uid: 4791fa0a-2161-4b48-be1b-1bba4c7f320c
+  resourceVersion: '69737'
+  uid: 8b760426-47c6-4ef3-8820-b8e0f918fadb
+spec:
+  clusterIP: 10.43.251.128
+  clusterIPs:
+    - 10.43.251.128
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+    - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+    - name: food-system
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    workload.user.cattle.io/workloadselector: apps.deployment-food-system-food-system
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

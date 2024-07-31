@@ -1,0 +1,270 @@
+apiVersion: v1
+kind: Node
+metadata:
+  annotations:
+    alpha.kubernetes.io/provided-node-ip: 172.17.0.2
+    etcd.k3s.cattle.io/local-snapshots-timestamp: '2024-07-31T00:34:33Z'
+    etcd.k3s.cattle.io/node-address: 172.17.0.2
+    etcd.k3s.cattle.io/node-name: f3750f97019b-c1755e75
+    flannel.alpha.coreos.com/backend-data: '{"VNI":1,"VtepMAC":"6a:19:46:83:4e:18"}'
+    flannel.alpha.coreos.com/backend-type: vxlan
+    flannel.alpha.coreos.com/kube-subnet-manager: 'true'
+    flannel.alpha.coreos.com/public-ip: 172.17.0.2
+    k3s.io/hostname: local-node
+    k3s.io/internal-ip: 172.17.0.2
+    k3s.io/node-args: >-
+      ["server","--cluster-init","--disable","traefik,servicelb,metrics-server,local-storage","--node-name","local-node","--log","./k3s.log"]
+    k3s.io/node-config-hash: FPKSMU4HMZ5GTPNRNIQDO472NLJ2KX4VIETHYVRRP6PWTM52RXLQ====
+    k3s.io/node-env: '{}'
+    management.cattle.io/pod-limits: '{"cpu":"4","memory":"170Mi"}'
+    management.cattle.io/pod-requests: '{"cpu":"2200m","memory":"270Mi","pods":"16"}'
+    node.alpha.kubernetes.io/ttl: '0'
+    volumes.kubernetes.io/controller-managed-attach-detach: 'true'
+  creationTimestamp: '2024-07-30T00:04:03Z'
+  finalizers:
+    - wrangler.cattle.io/node
+    - wrangler.cattle.io/managed-etcd-controller
+  labels:
+    beta.kubernetes.io/arch: amd64
+    beta.kubernetes.io/instance-type: k3s
+    beta.kubernetes.io/os: linux
+    kubernetes.io/arch: amd64
+    kubernetes.io/hostname: local-node
+    kubernetes.io/os: linux
+    node-role.kubernetes.io/control-plane: 'true'
+    node-role.kubernetes.io/etcd: 'true'
+    node-role.kubernetes.io/master: 'true'
+    node.kubernetes.io/instance-type: k3s
+  managedFields:
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            .: {}
+            f:alpha.kubernetes.io/provided-node-ip: {}
+            f:k3s.io/hostname: {}
+            f:k3s.io/internal-ip: {}
+            f:k3s.io/node-args: {}
+            f:k3s.io/node-config-hash: {}
+            f:k3s.io/node-env: {}
+            f:node.alpha.kubernetes.io/ttl: {}
+            f:volumes.kubernetes.io/controller-managed-attach-detach: {}
+          f:labels:
+            .: {}
+            f:beta.kubernetes.io/arch: {}
+            f:beta.kubernetes.io/instance-type: {}
+            f:beta.kubernetes.io/os: {}
+            f:kubernetes.io/arch: {}
+            f:kubernetes.io/hostname: {}
+            f:kubernetes.io/os: {}
+            f:node.kubernetes.io/instance-type: {}
+        f:spec:
+          f:podCIDR: {}
+          f:podCIDRs:
+            .: {}
+            v:"10.42.0.0/24": {}
+          f:providerID: {}
+      manager: k3s
+      operation: Update
+      time: '2024-07-30T00:04:16Z'
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:etcd.k3s.cattle.io/local-snapshots-timestamp: {}
+            f:etcd.k3s.cattle.io/node-address: {}
+            f:etcd.k3s.cattle.io/node-name: {}
+          f:finalizers:
+            .: {}
+            v:"wrangler.cattle.io/managed-etcd-controller": {}
+            v:"wrangler.cattle.io/node": {}
+          f:labels:
+            f:node-role.kubernetes.io/control-plane: {}
+            f:node-role.kubernetes.io/etcd: {}
+            f:node-role.kubernetes.io/master: {}
+      manager: k3s-supervisor@local-node
+      operation: Update
+      time: '2024-07-31T00:34:33Z'
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:management.cattle.io/pod-limits: {}
+            f:management.cattle.io/pod-requests: {}
+      manager: rancher
+      operation: Update
+      time: '2024-07-31T00:35:48Z'
+    - apiVersion: v1
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:flannel.alpha.coreos.com/backend-data: {}
+            f:flannel.alpha.coreos.com/backend-type: {}
+            f:flannel.alpha.coreos.com/kube-subnet-manager: {}
+            f:flannel.alpha.coreos.com/public-ip: {}
+        f:status:
+          f:allocatable:
+            f:memory: {}
+          f:capacity:
+            f:memory: {}
+          f:conditions:
+            k:{"type":"DiskPressure"}:
+              f:lastHeartbeatTime: {}
+            k:{"type":"EtcdIsVoter"}:
+              .: {}
+              f:lastHeartbeatTime: {}
+              f:lastTransitionTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+              f:type: {}
+            k:{"type":"MemoryPressure"}:
+              f:lastHeartbeatTime: {}
+            k:{"type":"PIDPressure"}:
+              f:lastHeartbeatTime: {}
+            k:{"type":"Ready"}:
+              f:lastHeartbeatTime: {}
+              f:message: {}
+              f:reason: {}
+              f:status: {}
+          f:images: {}
+          f:nodeInfo:
+            f:bootID: {}
+      manager: k3s
+      operation: Update
+      subresource: status
+      time: '2024-07-31T00:40:48Z'
+  name: local-node
+  resourceVersion: '148225'
+  uid: 17decec7-14a7-4078-8f6c-70ae6d8f7b71
+spec:
+  podCIDR: 10.42.0.0/24
+  podCIDRs:
+    - 10.42.0.0/24
+  providerID: k3s://local-node
+status:
+  addresses:
+    - address: 172.17.0.2
+      type: InternalIP
+    - address: local-node
+      type: Hostname
+  allocatable:
+    cpu: '16'
+    ephemeral-storage: '464893703009'
+    hugepages-1Gi: '0'
+    hugepages-2Mi: '0'
+    memory: 16044580Ki
+    pods: '110'
+  capacity:
+    cpu: '16'
+    ephemeral-storage: 477892376Ki
+    hugepages-1Gi: '0'
+    hugepages-2Mi: '0'
+    memory: 16044580Ki
+    pods: '110'
+  conditions:
+    - lastHeartbeatTime: '2024-07-31T00:40:48Z'
+      lastTransitionTime: '2024-07-31T00:40:48Z'
+      message: Node is not a member of the etcd cluster
+      reason: NotAMember
+      status: 'False'
+      type: EtcdIsVoter
+    - lastHeartbeatTime: '2024-07-31T00:39:39Z'
+      lastTransitionTime: '2024-07-30T00:04:03Z'
+      message: kubelet has sufficient memory available
+      reason: KubeletHasSufficientMemory
+      status: 'False'
+      type: MemoryPressure
+    - lastHeartbeatTime: '2024-07-31T00:39:39Z'
+      lastTransitionTime: '2024-07-30T00:04:03Z'
+      message: kubelet has no disk pressure
+      reason: KubeletHasNoDiskPressure
+      status: 'False'
+      type: DiskPressure
+    - lastHeartbeatTime: '2024-07-31T00:39:39Z'
+      lastTransitionTime: '2024-07-30T00:04:03Z'
+      message: kubelet has sufficient PID available
+      reason: KubeletHasSufficientPID
+      status: 'False'
+      type: PIDPressure
+    - lastHeartbeatTime: '2024-07-31T00:39:39Z'
+      lastTransitionTime: '2024-07-30T00:04:03Z'
+      message: kubelet is posting ready status
+      reason: KubeletReady
+      status: 'True'
+      type: Ready
+  daemonEndpoints:
+    kubeletEndpoint:
+      Port: 10250
+  images:
+    - names:
+        - >-
+          docker.io/eddcesilva/food-system@sha256:c678453564e183961c232d35c97c2d41843dba49dc205d1b17a157c18e4d4d3e
+        - docker.io/eddcesilva/food-system:2.0.0
+      sizeBytes: 269211607
+    - names:
+        - >-
+          docker.io/library/postgres@sha256:4449213fadd4f03c628c8f7e4182c03f1c38151ca4814a375273c6811e67ad70
+        - docker.io/library/postgres:13
+      sizeBytes: 148958656
+    - names:
+        - >-
+          docker.io/rancher/shell@sha256:3c725bd144728184651eda4fb2c87510c9c5d908aba59a33b3fe31bc9a40ae70
+        - docker.io/rancher/shell:v0.1.24
+      sizeBytes: 134050743
+    - names:
+        - >-
+          docker.io/rancher/fleet-agent@sha256:377cb3a9ce833f61d2c29f41c121aaa45d0b8925233063ee1d8e67b3c5cba5f9
+        - docker.io/rancher/fleet-agent:v0.9.5
+      sizeBytes: 107536191
+    - names:
+        - >-
+          docker.io/rancher/fleet@sha256:fe4a40cde2bac524fda51c09b73f87ec84dc40c5e0911902bf090c8cb52265dc
+        - docker.io/rancher/fleet:v0.9.5
+      sizeBytes: 89248471
+    - names:
+        - >-
+          docker.io/rancher/gitjob@sha256:4bc7c022e69044be5cbf5b4c1d0cb7ce64fc9eec835219e7c90de782cdaee9b1
+        - docker.io/rancher/gitjob:v0.9.8
+      sizeBytes: 87090914
+    - names:
+        - docker.io/rancher/mirrored-coredns-coredns:1.10.1
+      sizeBytes: 53618774
+    - names:
+        - >-
+          docker.io/rancher/mirrored-cluster-api-controller@sha256:29a27c7939908895fdaa330fdaf06a02c5a9d23e7106e7cd64d529f01fbdc1a2
+        - docker.io/rancher/mirrored-cluster-api-controller:v1.4.4
+      sizeBytes: 33556004
+    - names:
+        - >-
+          docker.io/rancher/rancher-webhook@sha256:7bcac7c0cd9b2e1b643186fc5aaad8779eb88dc4e7c6d906c8df0888dbf1806a
+        - docker.io/rancher/rancher-webhook:v0.4.7
+      sizeBytes: 27630645
+    - names:
+        - >-
+          registry.k8s.io/metrics-server/metrics-server@sha256:db3800085a0957083930c3932b17580eec652cfb6156a05c0f79c7543e80d17a
+        - registry.k8s.io/metrics-server/metrics-server:v0.7.1
+      sizeBytes: 19478031
+    - names:
+        - >-
+          docker.io/rancher/kubectl@sha256:962ac9d5ffef082196730eea8fcd1657b5d21feeec36e5d398a092154e1fa48f
+        - docker.io/rancher/kubectl:v1.20.2
+      sizeBytes: 12025611
+    - names:
+        - docker.io/rancher/mirrored-pause:3.6
+      sizeBytes: 685866
+  nodeInfo:
+    architecture: amd64
+    bootID: e842f7b7-8920-41f0-81d0-bdfc5f49f9c9
+    containerRuntimeVersion: containerd://1.7.11-k3s2
+    kernelVersion: 6.5.0-1025-oem
+    kubeProxyVersion: v1.28.6+k3s2
+    kubeletVersion: v1.28.6+k3s2
+    machineID: ''
+    operatingSystem: linux
+    osImage: SUSE Linux Enterprise Server 15 SP5
+    systemUUID: 4c4c4544-0031-3210-8048-b9c04f583134
